@@ -60,6 +60,11 @@ It's there by Node.js convention, but will always be `null`.
 Type: `boolean`
 
 
+## Related
+
+- [is-reachable](https://github.com/sindresorhus/is-reachable/) - Check if servers are reachable 
+
+
 ## License
 
 MIT © [Sindre Sorhus](http://sindresorhus.com)

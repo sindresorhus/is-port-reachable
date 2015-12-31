@@ -1,23 +1,26 @@
-'use strict';
-var test = require('ava');
-var fn = require('./');
+import test from 'ava';
+import m from './';
 
-test(function (t) {
-	t.plan(4);
-
-	fn(80, {host: '216.58.217.142'}, function (_, reachable) {
-		t.assert(reachable);
+test('ip', t => {
+	m(80, {host: '216.58.217.142'}, (_, reachable) => {
+		t.true(reachable);
 	});
+});
 
-	fn(80, {host: 'google.com'}, function (_, reachable) {
-		t.assert(reachable);
+test('domain', t => {
+	m(80, {host: 'google.com'}, (_, reachable) => {
+		t.true(reachable);
 	});
+});
 
-	fn(8000, {host: 'google.com'}, function (_, reachable) {
-		t.assert(!reachable);
+test('domain - alternative port', t => {
+	m(8000, {host: 'google.com'}, (_, reachable) => {
+		t.false(reachable);
 	});
+});
 
-	fn(0, function (_, reachable) {
-		t.assert(!reachable);
+test('fail', t => {
+	m(0, (_, reachable) => {
+		t.false(reachable);
 	});
 });

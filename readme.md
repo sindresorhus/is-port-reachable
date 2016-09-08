@@ -26,7 +26,7 @@ isPortReachable(80, {host: 'google.com'}).then(reachable => {
 
 ### isPortReachable(port, [options])
 
-Returns a promise for a boolean.
+Returns a `Promise` for a `boolean`.
 
 #### port
 

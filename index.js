@@ -2,18 +2,17 @@
 const net = require('net');
 
 module.exports = (port, opts) => {
-	opts = Object.assign({}, opts);
-
-	const timeout = typeof opts.timeout === 'number' ? opts.timeout : 1000;
-	const socket = new net.Socket();
+	opts = Object.assign({timeout: 1000}, opts);
 
 	return new Promise((resolve => {
+		const socket = new net.Socket();
+
 		const onError = () => {
 			socket.destroy();
 			resolve(false);
 		};
 
-		socket.setTimeout(timeout);
+		socket.setTimeout(opts.timeout);
 		socket.on('error', onError);
 		socket.on('timeout', onError);
 

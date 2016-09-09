@@ -13,7 +13,7 @@
     "silverwind <me@silverwind.io> (github.com/silverwind)"
   ],
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "xo && ava"
@@ -38,11 +38,11 @@
     "is",
     "check"
   ],
-  "dependencies": {
-    "onetime": "^1.0.0"
-  },
   "devDependencies": {
     "ava": "*",
     "xo": "*"
+  },
+  "xo": {
+    "esnext": true
   }
 }

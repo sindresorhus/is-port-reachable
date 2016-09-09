@@ -1,29 +1,24 @@
 'use strict';
-var net = require('net');
-var onetime = require('onetime');
+const net = require('net');
 
-module.exports = function (port, opts, cb) {
-	if (typeof opts !== 'object') {
-		cb = opts;
-		opts = {};
-	}
+module.exports = (port, opts) => {
+	opts = Object.assign({timeout: 1000}, opts);
 
-	cb = cb ? onetime(cb) : function () {};
+	return new Promise((resolve => {
+		const socket = new net.Socket();
 
-	var timeout = typeof opts.timeout === 'number' ? opts.timeout : 1000;
-	var socket = new net.Socket();
+		const onError = () => {
+			socket.destroy();
+			resolve(false);
+		};
 
-	var onError = function () {
-		cb(null, false);
-		socket.destroy();
-	};
+		socket.setTimeout(opts.timeout);
+		socket.on('error', onError);
+		socket.on('timeout', onError);
 
-	socket.setTimeout(timeout);
-	socket.on('error', onError);
-	socket.on('timeout', onError);
-
-	socket.connect(port, opts.host, function () {
-		cb(null, true);
-		socket.end();
-	});
+		socket.connect(port, opts.host, () => {
+			socket.end();
+			resolve(true);
+		});
+	}));
 };

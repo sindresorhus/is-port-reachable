@@ -1,26 +1,18 @@
 import test from 'ava';
 import m from './';
 
-test('ip', t => {
-	m(80, {host: '216.58.217.142'}, (_, reachable) => {
-		t.true(reachable);
-	});
+test('ip', async t => {
+	t.true(await m(80, {host: '216.58.217.142'}));
 });
 
-test('domain', t => {
-	m(80, {host: 'google.com'}, (_, reachable) => {
-		t.true(reachable);
-	});
+test('domain', async t => {
+	t.true(await m(80, {host: 'google.com'}));
 });
 
-test('domain - alternative port', t => {
-	m(8000, {host: 'google.com'}, (_, reachable) => {
-		t.false(reachable);
-	});
+test('domain - alternative port', async t => {
+	t.false(await m(8000, {host: 'google.com'}));
 });
 
-test('fail', t => {
-	m(0, (_, reachable) => {
-		t.false(reachable);
-	});
+test('fail', async t => {
+	t.false(await m(0));
 });

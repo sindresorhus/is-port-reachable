@@ -13,8 +13,8 @@ module.exports = (port, opts) => {
 		};
 
 		socket.setTimeout(opts.timeout);
-		socket.on('error', onError);
-		socket.on('timeout', onError);
+		socket.once('error', onError);
+		socket.once('timeout', onError);
 
 		socket.connect(port, opts.host, () => {
 			socket.end();

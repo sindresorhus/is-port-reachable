@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save is-port-reachable
+$ npm install is-port-reachable
 ```
 
 
@@ -15,10 +15,10 @@ $ npm install --save is-port-reachable
 ```js
 const isPortReachable = require('is-port-reachable');
 
-isPortReachable(80, {host: 'google.com'}).then(reachable => {
-	console.log(reachable);
+(async () => {
+	console.log(await isPortReachable(80, {host: 'google.com'}));
 	//=> true
-});
+})();
 ```
 
 
@@ -26,13 +26,15 @@ isPortReachable(80, {host: 'google.com'}).then(reachable => {
 
 ### isPortReachable(port, [options])
 
-Returns a `Promise` for a `boolean`.
+Returns `Promise<boolean>`.
 
 #### port
 
 Type: `number`
 
 #### options
+
+Type: `Object`
 
 ##### host
 
@@ -51,7 +53,7 @@ Milliseconds to wait before giving up.
 
 ## Related
 
-- [is-reachable](https://github.com/sindresorhus/is-reachable/) - Check if servers are reachable 
+- [is-reachable](https://github.com/sindresorhus/is-reachable/) - Check if servers are reachable
 
 
 ## License

@@ -1,8 +1,8 @@
 'use strict';
 const net = require('net');
 
-module.exports = (port, opts) => {
-	opts = Object.assign({timeout: 1000}, opts);
+module.exports = (port, options) => {
+	options = Object.assign({timeout: 1000}, options);
 
 	return new Promise((resolve => {
 		const socket = new net.Socket();
@@ -12,11 +12,11 @@ module.exports = (port, opts) => {
 			resolve(false);
 		};
 
-		socket.setTimeout(opts.timeout);
+		socket.setTimeout(options.timeout);
 		socket.once('error', onError);
 		socket.once('timeout', onError);
 
-		socket.connect(port, opts.host, () => {
+		socket.connect(port, options.host, () => {
 			socket.end();
 			resolve(true);
 		});

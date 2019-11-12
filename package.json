@@ -1,6 +1,6 @@
 {
 	"name": "is-port-reachable",
-	"version": "2.0.1",
+	"version": "3.0.0",
 	"description": "Check if a local or remote port is reachable",
 	"license": "MIT",
 	"repository": "sindresorhus/is-port-reachable",

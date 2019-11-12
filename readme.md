@@ -24,7 +24,7 @@ const isPortReachable = require('is-port-reachable');
 
 ## API
 
-### isPortReachable(port, [options])
+### isPortReachable(port, options?)
 
 Returns `Promise<boolean>`.
 
@@ -34,18 +34,18 @@ Type: `number`
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 ##### host
 
-Type: `string`<br>
-Default: `localhost`
+Type: `string`\
+Default: `'localhost'`
 
 Can be a domain or an IP.
 
 ##### timeout
 
-Type: `number`<br>
+Type: `number`\
 Default: `1000`
 
 Milliseconds to wait before giving up.
@@ -54,8 +54,3 @@ Milliseconds to wait before giving up.
 ## Related
 
 - [is-reachable](https://github.com/sindresorhus/is-reachable/) - Check if servers are reachable
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

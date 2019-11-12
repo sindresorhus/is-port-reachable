@@ -13,7 +13,7 @@
 		"silverwind <me@silverwind.io> (github.com/silverwind)"
 	],
 	"engines": {
-		"node": ">=4"
+		"node": ">=8"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -39,7 +39,7 @@
 		"check"
 	],
 	"devDependencies": {
-		"ava": "^0.25.0",
-		"xo": "^0.18.0"
+		"ava": "^2.4.0",
+		"xo": "^0.25.3"
 	}
 }

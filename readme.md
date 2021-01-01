@@ -1,4 +1,4 @@
-# is-port-reachable [![Build Status](https://travis-ci.org/sindresorhus/is-port-reachable.svg?branch=master)](https://travis-ci.org/sindresorhus/is-port-reachable)
+# is-port-reachable
 
 > Check if a local or remote port is reachable
 

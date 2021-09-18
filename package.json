@@ -19,7 +19,8 @@
 		"test": "xo && ava && tsd"
 	},
 	"files": [
-		"index.js"
+		"index.js",
+    "index.d.ts"
 	],
 	"keywords": [
 		"port",

@@ -1,5 +1,22 @@
+interface IsPortReachableOptions {
+  /**
+  Milliseconds to wait before giving up.
+
+  @default 1000
+  */
+  timeout?: number;
+
+  /**
+  Can be a domain or an IP.
+
+  @default localhost
+  */
+  host?: string;
+}
+
 /**
-Check if a local or remote port is reachable
+Check if a local or remote port is reachable.
+
 @example
 ```
 import isPortReachable from 'is-port-reachable';
@@ -9,6 +26,6 @@ if(await isPortReachable(3000)) {
 }
 ```
 */
-declare function isPortReachable(port: number, opts?: {timeout?: number, host?: string}): Promise<boolean>;
+declare function isPortReachable(port: number, options?: IsPortReachableOptions): Promise<boolean>;
 
-export default isPortReachable;
+export = isPortReachable;

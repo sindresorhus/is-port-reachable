@@ -9,6 +9,13 @@ if(await isPortReachable(3000)) {
 }
 ```
 */
-declare function isPortReachable(port: number, opts?: {timeout: number, host: string}): Promise<boolean>;
-
-export default isPortReachable;
+declare module 'is-port-reachable' {
+  export interface IsPortReachableOptions {
+    timeout?: number | undefined;
+    host?: string;
+  }
+  export default function(
+    port: number | undefined,
+    options?: IsPortReachableOptions
+  ): Promise<boolean>;
+}

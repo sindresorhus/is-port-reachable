@@ -1,4 +1,4 @@
 import {expectType} from 'tsd';
-import isPortReachable = require('.');
+import isPortReachable from './index.js';
 
-expectType<boolean>(await isPortReachable(3000));
+expectType<Promise<boolean>>(isPortReachable(3000, {host: 'localhost'}));

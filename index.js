@@ -1,7 +1,10 @@
-'use strict';
-const net = require('net');
+import net from 'node:net';
 
-module.exports = async (port, {timeout = 1000, host} = {}) => {
+export default async function isPortReachable(port, {host, timeout = 1000} = {}) {
+	if (typeof host !== 'string') {
+		throw new TypeError('Specify a `host`');
+	}
+
 	const promise = new Promise(((resolve, reject) => {
 		const socket = new net.Socket();
 
@@ -23,7 +26,7 @@ module.exports = async (port, {timeout = 1000, host} = {}) => {
 	try {
 		await promise;
 		return true;
-	} catch (_) {
+	} catch {
 		return false;
 	}
-};
+}

@@ -1,17 +1,19 @@
-interface Options {
+export interface Options {
 	/**
-	Milliseconds to wait before giving up.
+	The host to check.
+
+	Can be a domain (optionally, with a sub-domain) or an IP address.
+
+	@example 'localhost'
+	*/
+	readonly host: string;
+
+	/**
+	The time to wait in milliseconds before giving up.
 
 	@default 1000
 	*/
-	timeout?: number;
-
-	/**
-	Can be a domain or an IP.
-
-	@default 'localhost'
-	*/
-	host?: string;
+	readonly timeout?: number;
 }
 
 /**
@@ -21,11 +23,8 @@ Check if a local or remote port is reachable.
 ```
 import isPortReachable from 'is-port-reachable';
 
-if(await isPortReachable(3000)) {
-	// start server
-}
+console.log(await isPortReachable(80, {host: 'google.com'}));
+//=> true
 ```
 */
-declare function isPortReachable(port: number, options?: Options): Promise<boolean>;
-
-export = isPortReachable;
+export default function isPortReachable(port: number, options: Options): Promise<boolean>;

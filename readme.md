@@ -2,35 +2,32 @@
 
 > Check if a local or remote port is reachable
 
-
 ## Install
 
+```sh
+npm install is-port-reachable
 ```
-$ npm install is-port-reachable
-```
-
 
 ## Usage
 
 ```js
-const isPortReachable = require('is-port-reachable');
+import isPortReachable from 'is-port-reachable';
 
-(async () => {
-	console.log(await isPortReachable(80, {host: 'google.com'}));
-	//=> true
-})();
+console.log(await isPortReachable(80, {host: 'google.com'}));
+//=> true
 ```
-
 
 ## API
 
-### isPortReachable(port, options?)
+### isPortReachable(options)
 
-Returns `Promise<boolean>`.
+Returns `Promise<boolean>` for whether the port is reachable.
 
-#### port
+##### port
 
 Type: `number`
+
+The port to check.
 
 #### options
 
@@ -38,18 +35,20 @@ Type: `object`
 
 ##### host
 
+**Required**\
 Type: `string`\
-Default: `'localhost'`
+Example: `'localhost'`
 
-Can be a domain or an IP.
+The host to check.
+
+Can be a domain (optionally, with a sub-domain) or an IP address.
 
 ##### timeout
 
 Type: `number`\
 Default: `1000`
 
-Milliseconds to wait before giving up.
-
+The time to wait in milliseconds before giving up.
 
 ## Related
 

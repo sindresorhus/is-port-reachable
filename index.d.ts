@@ -1,17 +1,17 @@
-interface IsPortReachableOptions {
-  /**
-  Milliseconds to wait before giving up.
+interface Options {
+	/**
+	Milliseconds to wait before giving up.
 
-  @default 1000
-  */
-  timeout?: number;
+	@default 1000
+	*/
+	timeout?: number;
 
-  /**
-  Can be a domain or an IP.
+	/**
+	Can be a domain or an IP.
 
-  @default localhost
-  */
-  host?: string;
+	@default 'localhost'
+	*/
+	host?: string;
 }
 
 /**
@@ -26,6 +26,6 @@ if(await isPortReachable(3000)) {
 }
 ```
 */
-declare function isPortReachable(port: number, options?: IsPortReachableOptions): Promise<boolean>;
+declare function isPortReachable(port: number, options?: Options): Promise<boolean>;
 
 export = isPortReachable;

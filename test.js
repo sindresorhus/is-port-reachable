@@ -17,7 +17,7 @@ test('domain - alternative port', async t => {
 });
 
 test('domain - with subdomain', async t => {
-	t.true(await isPortReachable(80, {host: 'blog.sindresorhus.com'}));
+	t.true(await isPortReachable(80, {host: 'newsletter.sindresorhus.com'}));
 });
 
 test('fail', async t => {
